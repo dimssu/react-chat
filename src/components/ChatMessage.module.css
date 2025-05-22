@@ -1,0 +1,52 @@
+.messageContainer {
+  display: flex;
+  margin-bottom: 8px;
+}
+.messageContainer.userMessage {
+  justify-content: flex-end;
+}
+.messageContainer.botMessage {
+  justify-content: flex-start;
+}
+
+.avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 8px;
+}
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.messageContent {
+  max-width: 80%;
+  padding: 10px 14px;
+  border-radius: 18px;
+  position: relative;
+}
+.userMessage .messageContent {
+  border-bottom-right-radius: 4px;
+}
+.botMessage .messageContent {
+  border-bottom-left-radius: 4px;
+}
+
+.messageText {
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.timestamp {
+  font-size: 11px;
+  opacity: 0.7;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/*# sourceMappingURL=ChatMessage.module.css.map */

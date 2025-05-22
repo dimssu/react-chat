@@ -1,0 +1,28 @@
+{
+  "name": "shep-chatbot",
+  "version": "1.0.2",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "style": "dist/components/ChatBot.module.css",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "for f in src/components/*.module.scss; do npx sass \"$f\" \"${f%.module.scss}.module.css\"; done",
+    "build:ts": "tsc",
+    "build:copy-css": "cp src/components/*.module.css dist/components/",
+    "build": "npm run build:css && npm run build:ts && npm run build:copy-css"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "react": "^19.1.0",
+    "sass": "^1.89.0",
+    "typescript": "^5.8.3"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.21",
+    "@types/react": "^19.1.5"
+  }
+}

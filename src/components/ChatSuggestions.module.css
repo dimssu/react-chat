@@ -1,0 +1,51 @@
+.suggestionsContainer {
+  margin: 12px 0;
+}
+
+.suggestionsLabel {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 8px;
+}
+
+.suggestionsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.suggestionButton {
+  background: transparent;
+  border: 1px solid;
+  border-radius: 16px;
+  padding: 6px 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.suggestionButton:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+.suggestionButton:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+.suggestionIcon {
+  font-size: 11px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: currentColor;
+  color: white;
+}
+
+/*# sourceMappingURL=ChatSuggestions.module.css.map */
