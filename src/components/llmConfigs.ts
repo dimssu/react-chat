@@ -1,3 +1,12 @@
+// AI Guideline Prompt
+export const AI_GUIDELINE_PROMPT = `
+Do not include markdown formatting in your response.
+Make your answers crisp and concise.
+Avoid unnecessary explanations or repetition.
+Respond in plain text only.
+Focus on actionable steps or direct answers.
+`;
+
 export type LlmProvider = 'openai' | 'gemini' | 'claude';
 
 interface DirectLlmConfig {
@@ -7,6 +16,10 @@ interface DirectLlmConfig {
   headers?: Record<string, string>;
   formatMessages: (messages: any[], newMessage: string, context?: string) => any;
   parseResponse: (data: any) => string;
+}
+
+function prependGuideline(context?: string) {
+  return context ? `${AI_GUIDELINE_PROMPT}\n${context}` : AI_GUIDELINE_PROMPT;
 }
 
 export function getLlmConfig(provider: LlmProvider, apiKey: string): DirectLlmConfig {
@@ -23,7 +36,7 @@ export function getLlmConfig(provider: LlmProvider, apiKey: string): DirectLlmCo
         formatMessages: (messages, newMessage, context) => ({
           model: 'gpt-3.5-turbo',
           messages: [
-            ...(context ? [{ role: 'system', content: context }] : []),
+            ...(context ? [{ role: 'system', content: prependGuideline(context) }] : [{ role: 'system', content: AI_GUIDELINE_PROMPT }]),
             ...messages.map(msg => ({
               role: msg.sender === 'user' ? 'user' : 'assistant',
               content: msg.content
@@ -44,7 +57,7 @@ export function getLlmConfig(provider: LlmProvider, apiKey: string): DirectLlmCo
         },
         formatMessages: (messages, newMessage, context) => ({
           contents: [
-            ...(context ? [{ role: 'user', parts: [{ text: context }] }] : []),
+            ...(context ? [{ role: 'user', parts: [{ text: prependGuideline(context) }] }] : [{ role: 'user', parts: [{ text: AI_GUIDELINE_PROMPT }] }]),
             ...messages.map(msg => ({
               role: msg.sender === 'user' ? 'user' : 'model',
               parts: [{ text: msg.content }]
@@ -78,7 +91,7 @@ export function getLlmConfig(provider: LlmProvider, apiKey: string): DirectLlmCo
             })),
             { role: 'user', content: newMessage }
           ],
-          system: context || ''
+          system: prependGuideline(context)
         }),
         parseResponse: (data) => data.content?.[0]?.text || ''
       };
