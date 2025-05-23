@@ -1,4 +1,4 @@
-# Dissu Talks - React Chatbot Component
+# Shep Chatbot - React Chatbot Component
 
 A customizable React chatbot component that can be easily integrated into any web application.  
 Supports multiple LLM providers, custom styling, file uploads, feedback collection, and more.
@@ -28,7 +28,7 @@ Supports multiple LLM providers, custom styling, file uploads, feedback collecti
 ## 🚀 Installation
 
 ```bash
-npm install dissu-talks
+npm install shep-chatbot
 ```
 
 ## 🛠️ Usage
@@ -36,7 +36,7 @@ npm install dissu-talks
 ### Basic Setup with Backend API
 
 ```jsx
-import { ChatBot } from 'dissu-talks';
+import { ChatBot } from 'shep-chatbot';
 
 function App() {
   return (
